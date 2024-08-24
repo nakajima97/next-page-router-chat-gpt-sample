@@ -1,3 +1,5 @@
+import { Chat } from '@/components/page/Chat';
+
 export default function Home() {
-	return <main>Hello World!!</main>;
+	return <Chat />;
 }
