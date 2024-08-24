@@ -3,20 +3,13 @@
 import { ChatForm } from '@/components/ui/ChatForm';
 import { ChatMain } from '@/components/ui/ChatMain';
 import { Header } from '@/components/ui/Header';
-import type { ChatHistories } from '@/types';
+import { useChatLogic } from '@/hooks/useChatLogic';
 import { Box } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 
 export const Chat = () => {
-	// 会話履歴を管理するためのstate
-	const [chatHistories, setChatHistories] = useState<ChatHistories>([]);
-
-	// チャット入力欄の値を管理するためのstate
-	const [message, setMessage] = useState('');
-
-	const sendMessage = async () => {
-		console.log('メッセージを送る');
-	};
+	const { chatHistory, message, handleChangeMessage, handleSendMessage } =
+		useChatLogic();
 
 	return (
 		<Box
@@ -34,13 +27,13 @@ export const Chat = () => {
 				<Header />
 			</Box>
 			<Box sx={{ flexGrow: 1, width: '100%' }}>
-				<ChatMain chatHistories={chatHistories} />
+				<ChatMain chatHistory={chatHistory} />
 			</Box>
 			<Box sx={{ width: '100%' }}>
 				<ChatForm
 					message={message}
-					setMessage={setMessage}
-					sendMessage={sendMessage}
+					setMessage={handleChangeMessage}
+					sendMessage={handleSendMessage}
 				/>
 			</Box>
 		</Box>
