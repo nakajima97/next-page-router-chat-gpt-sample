@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 type Props = {
 	message: string;
-	setMessage: (value: string) => void;
+	setMessage: (text: string) => void;
 	sendMessage: () => void;
 };
 
@@ -22,7 +22,7 @@ export const ChatForm: FC<Props> = ({ message, setMessage, sendMessage }) => {
 				sx={{ flexGrow: 1 }}
 				placeholder="何か聞きたいことはありますか？"
 				value={message}
-				onChange={(e) => setMessage(e.target.value)}
+				onChange={(event) => setMessage(event.target.value)}
 			/>
 			<Button variant="contained" onClick={sendMessage}>
 				送信

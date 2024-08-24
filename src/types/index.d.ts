@@ -1,9 +1,9 @@
 export type Role = 'user' | 'assistant';
 
-export type ChatHistory = {
-	id: number;
-	content: string;
+export type Chat = {
+	id: string;
 	role: Role;
+	content: string;
 };
 
-export type ChatHistories = ChatHistory[];
+export type ChatHistory = Chat[];
